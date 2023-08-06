@@ -1,3 +1,5 @@
+# 🍜 Case Study #1: Danny's Diner 
+<img src="https://user-images.githubusercontent.com/81607668/127727503-9d9e7a25-93cb-4f95-8bd0-20b87cb4b459.png" alt="Image" width="500" height="520">
 
 -- 1. What is the total amount each customer spent at the restaurant?
 ````sql
@@ -9,57 +11,71 @@ JOIN menu m
 ON s.product_id = m.product_id
 GROUP BY s.customer_id;
 ````
+Anaswer:
 
+![week1_question1](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/ff4065fd-2019-4407-a686-5e59bb91b140)
+
+***
 -- 2. How many days has each customer visited the restaurant?
 ````sql
-SELECT 
-	customer_id, 
-    COUNT(DISTINCT order_date) AS days_visited
+SELECT
+  customer_id, 
+  COUNT(DISTINCT order_date) AS days_visited
 FROM sales
 GROUP BY customer_id;
 ````
+Answer:
 
+![week1_question2](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/d538c99c-68e4-4044-b59e-101d4dd8d700)
+***
 -- 3. What was the first item from the menu purchased by each customer?
 ````sql
 SELECT 
-	customer_id, 
-	product_name
+  customer_id, 
+  product_name
 FROM (	  
-	SELECT 
-		sales.customer_id, 
-		sales.order_date, 
-		menu.product_name,
-		DENSE_RANK() OVER (
-		  PARTITION BY sales.customer_id 
-		  ORDER BY sales.order_date
-		) AS customer_rank
-	FROM dannys_diner.sales
-	INNER JOIN dannys_diner.menu
-	ON sales.product_id = menu.product_id
+  SELECT 
+	sales.customer_id, 
+	sales.order_date, 
+	menu.product_name,
+	DENSE_RANK() OVER (
+	 PARTITION BY sales.customer_id 
+	 ORDER BY sales.order_date
+	) AS customer_rank
+FROM dannys_diner.sales
+INNER JOIN dannys_diner.menu
+ON sales.product_id = menu.product_id
 ) AS ordered_sales
 WHERE customer_rank = 1
 GROUP BY customer_id, product_name;
 ````
-  
+Answer:
+
+![week1_question3](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/2a173c48-9d86-4ff8-8368-e769d62ca6bd)
+***
 -- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ````sql
 SELECT 
-	m.product_id, 
-    m.product_name, 
-    COUNT(*) AS purchase_count
+  m.product_id,
+  m.product_name, 
+  COUNT(*) AS purchase_count
 FROM sales s
 JOIN menu m ON s.product_id = m.product_id
 GROUP BY m.product_id, m.product_name
 ORDER BY purchase_count DESC
 LIMIT 1;
 ````
+Answer:
 
+![week1_question4](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/cebb1a65-111e-454e-82c5-2d1b3bf38268)
+
+***
 -- 5. Which item was the most popular for each customer?
 ````sql
 SELECT 
-	t.customer_id, 
-    m.product_name, 
-    t.purchase_count
+  t.customer_id, 
+  m.product_name, 
+  t.purchase_count
 FROM (
   SELECT s.customer_id, s.product_id, COUNT(*) AS purchase_count
   FROM sales s
@@ -81,7 +97,11 @@ JOIN (
 JOIN menu m ON t.product_id = m.product_id
 ORDER BY customer_id;
 ````
+Answer:
 
+![week1_question5](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/70319a2b-2f87-4abf-9dc6-b0b2a6dd3daf)
+
+***
 -- 6. Which item was purchased first by the customer after they became a member?
 ````sql
 WITH member_purchase_cte AS (
@@ -102,7 +122,10 @@ SELECT
 FROM member_purchase_cte
 WHERE purchase_rank = 1;
 ````
-	
+Answer:
+
+![week1_question6](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/8cef69e4-352a-4480-838f-5b1423cde114)
+***
 -- 7. Which item was purchased just before the customer became a member?
 ````sql
 # Create a temporary table (CTE)
@@ -124,7 +147,12 @@ SELECT
 FROM member_purchase_cte
 WHERE purchase_rank = 1;
 ````
+Answer:
 
+![week1_question7](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/0082082e-b36c-4667-852d-0061af69b365)
+
+
+***
 -- 8. What is the total items and amount spent for each member before they became a member?
 ````sql
 SELECT
@@ -137,7 +165,11 @@ LEFT JOIN members mem ON s.customer_id = mem.customer_id AND s.order_date >= mem
 WHERE mem.customer_id IS NULL
 GROUP BY s.customer_id;
 ````
+Answer:
 
+![week1_question8](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/d412b886-2c5c-4284-8e29-a844a6bf4cbb)
+
+***
 -- 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 ````sql
 SELECT
@@ -153,6 +185,11 @@ JOIN menu m ON s.product_id = m.product_id
 GROUP BY s.customer_id;
 ````
 
+Answer:
+
+![week1_question9](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/7da662ba-780d-43bf-bcf3-4df15a289460)
+
+***
 -- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 ````sql
 SELECT
@@ -171,3 +208,6 @@ WHERE (s.order_date >= '2021-01-01' AND s.order_date <= '2021-01-31') AND s.cust
 GROUP BY s.customer_id
 ORDER BY s.customer_id;
 ````
+Answer:
+
+![week1_question10](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/5f6737ed-57a2-4121-a5a4-b40f1aa6e484)
