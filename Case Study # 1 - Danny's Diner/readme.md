@@ -1,7 +1,7 @@
 # 🍜 Case Study #1: Danny's Diner 
 <img src="https://user-images.githubusercontent.com/81607668/127727503-9d9e7a25-93cb-4f95-8bd0-20b87cb4b459.png" alt="Image" width="500" height="520">
 
--- 1. What is the total amount each customer spent at the restaurant?
+1. What is the total amount each customer spent at the restaurant?
 ````sql
 SELECT
   s.customer_id, 
@@ -16,7 +16,7 @@ Anaswer:
 ![week1_question1](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/ff4065fd-2019-4407-a686-5e59bb91b140)
 
 ***
--- 2. How many days has each customer visited the restaurant?
+2. How many days has each customer visited the restaurant?
 ````sql
 SELECT
   customer_id, 
@@ -28,7 +28,7 @@ Answer:
 
 ![week1_question2](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/d538c99c-68e4-4044-b59e-101d4dd8d700)
 ***
--- 3. What was the first item from the menu purchased by each customer?
+3. What was the first item from the menu purchased by each customer?
 ````sql
 SELECT 
   customer_id, 
@@ -53,7 +53,7 @@ Answer:
 
 ![week1_question3](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/2a173c48-9d86-4ff8-8368-e769d62ca6bd)
 ***
--- 4. What is the most purchased item on the menu and how many times was it purchased by all customers?
+4. What is the most purchased item on the menu and how many times was it purchased by all customers?
 ````sql
 SELECT 
   m.product_id,
@@ -70,7 +70,7 @@ Answer:
 ![week1_question4](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/cebb1a65-111e-454e-82c5-2d1b3bf38268)
 
 ***
--- 5. Which item was the most popular for each customer?
+5. Which item was the most popular for each customer?
 ````sql
 SELECT 
   t.customer_id, 
@@ -102,7 +102,7 @@ Answer:
 ![week1_question5](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/70319a2b-2f87-4abf-9dc6-b0b2a6dd3daf)
 
 ***
--- 6. Which item was purchased first by the customer after they became a member?
+6. Which item was purchased first by the customer after they became a member?
 ````sql
 WITH member_purchase_cte AS (
   SELECT
@@ -126,7 +126,7 @@ Answer:
 
 ![week1_question6](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/8cef69e4-352a-4480-838f-5b1423cde114)
 ***
--- 7. Which item was purchased just before the customer became a member?
+7. Which item was purchased just before the customer became a member?
 ````sql
 # Create a temporary table (CTE)
 WITH member_purchase_cte AS (
@@ -153,7 +153,7 @@ Answer:
 
 
 ***
--- 8. What is the total items and amount spent for each member before they became a member?
+8. What is the total items and amount spent for each member before they became a member?
 ````sql
 SELECT
   s.customer_id,
@@ -170,7 +170,7 @@ Answer:
 ![week1_question8](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/d412b886-2c5c-4284-8e29-a844a6bf4cbb)
 
 ***
--- 9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+9.  If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
 ````sql
 SELECT
   s.customer_id,
@@ -190,7 +190,7 @@ Answer:
 ![week1_question9](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/7da662ba-780d-43bf-bcf3-4df15a289460)
 
 ***
--- 10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
+10. In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
 ````sql
 SELECT
   s.customer_id,
