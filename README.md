@@ -13,7 +13,7 @@ JOIN menu m
 ON s.product_id = m.product_id
 GROUP BY s.customer_id;
 ````
-Anaswer:
+Answer:
 
 ![week1_question1](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/ff4065fd-2019-4407-a686-5e59bb91b140)
 
