@@ -29,6 +29,7 @@ Answer:
 ![week1_question2](https://github.com/Chuntim0303/8-Week-SQL-Challenge/assets/126696701/d538c99c-68e4-4044-b59e-101d4dd8d700)
 ***
 3. What was the first item from the menu purchased by each customer?
+
 ````sql
 SELECT 
   customer_id, 
